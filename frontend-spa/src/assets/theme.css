@@ -1,0 +1,80 @@
+:root {
+  --galaxy-purple: #5A42D4;
+  --cosmic-blue: #2E73E8;
+  --starlight-yellow: #FFD94D;
+  --deep-space-black: #0D0C1D;
+  --nebula-white: #F5F5FA;
+  --surface-glass: rgba(245, 245, 250, 0.05);
+  --border-glass: rgba(245, 245, 250, 0.2);
+}
+
+.cineverse-theme {
+  color: var(--nebula-white);
+  font-family: 'Be Vietnam Pro', sans-serif;
+  min-height: 100vh;
+}
+
+/* ========================================= */
+/* TÙY CHỈNH STYLE CHO VUE-TOASTIFICATION   */
+/* ========================================= */
+
+/* --- Style chung cho tất cả thông báo --- */
+.Vue-Toastification__toast {
+  background-color: var(--surface-glass) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  color: var(--nebula-white) !important;
+  border: 1px solid var(--border-glass) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+  padding: 15px 20px !important;
+  font-family: 'Be Vietnam Pro', sans-serif !important;
+}
+
+/* --- Thêm vạch màu bên trái để phân biệt loại thông báo --- */
+/* (Dùng màu tiêu chuẩn cho success/error để đảm bảo UX) */
+
+/* Success (Thành công) - Màu xanh lá */
+.Vue-Toastification__toast--success {
+  border-left: 5px solid #28a745 !important;
+}
+
+/* Error (Lỗi) - Màu đỏ */
+.Vue-Toastification__toast--error {
+  border-left: 5px solid #dc3545 !important;
+}
+
+/* Warning (Cảnh báo) - Dùng màu vàng của theme */
+.Vue-Toastification__toast--warning {
+  border-left: 5px solid var(--starlight-yellow) !important;
+}
+
+/* Info (Thông tin) - Dùng màu xanh dương của theme */
+.Vue-Toastification__toast--info {
+  border-left: 5px solid var(--cosmic-blue) !important;
+}
+
+/* --- Tùy chỉnh thanh tiến trình --- */
+.Vue-Toastification__progress-bar {
+  /* Giữ nguyên màu mặc định theo loại, chỉ cần chỉnh chiều cao nếu muốn */
+  height: 4px !important;
+}
+
+/* --- Tùy chỉnh nút đóng [x] --- */
+.Vue-Toastification__close-button {
+  color: var(--nebula-white) !important;
+  opacity: 0.7 !important;
+  transition: opacity 0.3s ease;
+}
+
+.Vue-Toastification__close-button:hover {
+  opacity: 1 !important;
+}
+
+.Vue-Toastification__toast-body {
+    flex: 1;
+    line-height: 32px !important;
+    font-size: 16px;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
