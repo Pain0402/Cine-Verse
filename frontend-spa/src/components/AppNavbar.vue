@@ -195,7 +195,7 @@ const goToSuggestion = (item) => {
 
 <style>
 .glass-nav {
-  background: var(--surface-glass);
+  background: rgba(13, 12, 29, 0.75); /* Darker background for better contrast */
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border-bottom: 1px solid var(--border-glass);
