@@ -70,8 +70,9 @@
           <!-- Dropdown Profile thông minh -->
           <li class="nav-item">
             <div class="btn-group profile">
-              <button type="button" class="btn action nav-link">
-                <i class="fa-solid fa-circle-user fs-4 text"></i>
+              <button type="button" class="btn action nav-link p-0 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                <img v-if="currentUser && currentUser.avatar_url" :src="currentUser.avatar_url" alt="Avatar" class="user-avatar-nav">
+                <i v-else class="fa-solid fa-circle-user fs-4 text"></i>
               </button>
               <ul v-if="isAuthenticated" class="dropdown-menu ">
                 <li v-if="isAdmin"><router-link :to="{ name: 'admin.dashboard' }" class="dropdown-item">Quản
@@ -115,6 +116,7 @@ import { useToast } from 'vue-toastification';
 const authStore = useAuthStore();
 const isAuthenticated = computed(() => authStore.isAuthenticated);
 const isAdmin = computed(() => authStore.isAdmin);
+const currentUser = computed(() => authStore.currentUser);
 const router = useRouter();
 const toast = useToast();
 const showLogoutConfirm = ref(false);
@@ -296,5 +298,13 @@ const goToSuggestion = (item) => {
   overflow-y: auto;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+}
+
+.user-avatar-nav {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--galaxy-purple);
 }
 </style>
