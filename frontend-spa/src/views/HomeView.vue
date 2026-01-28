@@ -5,7 +5,9 @@
       <main id="content" class="py-5">
         <div class="container">
           <div v-if="isLoading">
-            Đang tải...
+            <SkeletonMovieList />
+            <SkeletonMovieList />
+            <SkeletonMovieList />
           </div>
           <div v-else-if="error" class="alert alert-danger">{{ error.message }}</div>
 
@@ -27,6 +29,7 @@ import { useQuery } from '@tanstack/vue-query';
 import cineverseService from '@/services/cineverse.service';
 import MovieList from '@/components/MovieList.vue';
 import HeroSlider from '@/components/HeroSlider.vue';
+import SkeletonMovieList from '@/components/SkeletonMovieList.vue';
 
 // --- Banner nền ngẫu nhiên ---
 const imageUrls = [
