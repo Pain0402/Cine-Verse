@@ -208,9 +208,9 @@ onUnmounted(() => {
 /* Glassmorphism Badge */
 .meta-badge {
   display: inline-block;
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(var(--glass-blur));
+  background: var(--surface-glass);
+  border: 1px solid var(--border-glass);
   padding: 4px 12px;
   border-radius: 4px;
   font-size: 0.8rem;
@@ -272,9 +272,9 @@ onUnmounted(() => {
 }
 
 .btn-secondary-glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-glass);
   color: white;
   border-radius: 50px;
   padding: 12px 30px;
@@ -292,13 +292,13 @@ onUnmounted(() => {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--surface-glass);
   border: none;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   font-size: 1.2rem;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(var(--glass-blur));
   transition: all 0.3s ease;
   z-index: 10;
   cursor: pointer;
@@ -326,7 +326,7 @@ onUnmounted(() => {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--surface-glass);
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;

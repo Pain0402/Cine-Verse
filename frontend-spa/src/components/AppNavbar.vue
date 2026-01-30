@@ -197,10 +197,15 @@ const goToSuggestion = (item) => {
 
 <style>
 .glass-nav {
-  background: rgba(13, 12, 29, 0.75); /* Darker background for better contrast */
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--border-glass);
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-glass);
+  border-radius: 50px; /* Bo tròn mạnh hơn (Pill shape) */
+  top: 15px; 
+  left: 60px; /* Thu hẹp nhiều hơn */
+  right: 60px;
+  /* Override bootstrap fixed-top width behavior effectively */
 }
 
 .navbar-brand .navbar-brand-logo {
@@ -241,9 +246,11 @@ const goToSuggestion = (item) => {
 }
 
 .btn-group .dropdown-menu {
-  background-color: var(--deep-space-black);
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--border-glass);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 .btn-group:hover .dropdown-menu {
@@ -289,15 +296,15 @@ const goToSuggestion = (item) => {
   top: 100%;
   left: 0;
   right: 0;
-  background-color: #1c1c2b;
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--border-glass);
   border-top: none;
   border-radius: 0 0 0.5rem 0.5rem;
   z-index: 1000;
   max-height: 400px;
   overflow-y: auto;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 .user-avatar-nav {

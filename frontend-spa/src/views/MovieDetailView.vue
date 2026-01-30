@@ -17,7 +17,7 @@
 
     <div v-else-if="movie">
       <header class="movie-banner" >
-        <div class="banner-overlay">
+        <div class="banner-overlay glass-panel">
           <div class="container">
             <div class="row align-items-center">
               <div class="col-md-4 text-center text-md-start">
@@ -56,7 +56,7 @@
                       {{ isUpdatingWatchlist ? 'Đang thêm...' : 'Thêm vào danh sách' }}
                     </button>
 
-                    <div v-else class="watchlist-edit-form p-3 rounded-3 glass-surface">
+                    <div v-else class="watchlist-edit-form p-3 glass-panel">
                       <h5 class="mb-3">Chỉnh sửa danh sách xem</h5>
 
                       <div class="row g-2 align-items-end mb-3">
@@ -125,7 +125,7 @@
               <ReviewForm v-if="isWritingReview" :is-submitting="isSubmittingReview" @submit-review="handleReviewSubmit"
                 @cancel="isWritingReview = false" />
 
-              <div class="review-box glass-surface p-4 rounded-3">
+              <div class="review-box glass-panel p-4">
                 <div v-if="reviews.length === 0 && !isWritingReview" class="text-center text-light p-3">Chưa có đánh giá
                   nào. Hãy là người đầu tiên!</div>
 
@@ -164,7 +164,7 @@
           </div>
 
           <aside class="col-lg-4 mt-5 mt-lg-0">
-            <div class="glass-sidebar p-4 rounded-3 sticky-top">
+            <div class="glass-sidebar glass-panel p-4 sticky-top">
               <h4 class="sidebar-title">Thông tin</h4>
               <ul class="list-unstyled info-list">
                 <li><strong>Trạng thái:</strong> <span>{{ movie.status }}</span></li>

@@ -201,7 +201,10 @@ const formatRating = (rating) => {
 /* Info Section */
 .card-info {
   padding: 12px;
-  background: linear-gradient(to bottom, rgba(30, 30, 40, 0.95), rgba(15, 15, 20, 1));
+  background: var(--surface-glass); /* Use global glass variable */
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-top: 1px solid var(--border-glass);
   flex-grow: 1; 
   display: flex;
   flex-direction: column;
