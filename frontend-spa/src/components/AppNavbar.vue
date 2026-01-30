@@ -238,11 +238,22 @@ const goToSuggestion = (item) => {
   position: relative;
 }
 
+/* Navigation & Dropdown Styling */
+.nav-link,
+.btn-group > .btn {
+  padding: 8px 16px !important;
+  transition: all 0.3s ease;
+  border-radius: 50px !important; /* Force pill shape even in btn-group */
+  border: none; /* Remove potential borders affecting shape */
+}
+
 .nav-link:hover,
-.nav-link:focus {
+.nav-link:focus,
+.btn-group > .btn:hover {
   color: var(--starlight-yellow);
   font-weight: 700;
-  background-color: var(--surface-glass);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(255, 217, 77, 0.1);
 }
 
 .btn-group .dropdown-menu {

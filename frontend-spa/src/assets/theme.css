@@ -103,3 +103,35 @@ body {
   word-break: break-word;
   white-space: pre-wrap;
 }
+
+/* ========================================= */
+/* GLOBAL BUTTON STYLES                      */
+/* ========================================= */
+
+.btn-primary,
+.btn-gradient,
+.btn-accent,
+/* Override local accent buttons */
+.gradient-button {
+  background: linear-gradient(135deg, var(--galaxy-purple), var(--cosmic-blue)) !important;
+  border: none !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(90, 66, 212, 0.3) !important;
+  transition: all 0.3s ease !important;
+  font-weight: 600 !important;
+}
+
+.btn-primary:hover,
+.btn-gradient:hover,
+.btn-accent:hover,
+.gradient-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(90, 66, 212, 0.5) !important;
+  filter: brightness(1.1);
+}
+
+.btn-outline-light:hover {
+  background: linear-gradient(135deg, var(--galaxy-purple), var(--cosmic-blue)) !important;
+  border-color: transparent !important;
+  color: white !important;
+}
