@@ -16,7 +16,7 @@
     </div>
 
     <div v-else-if="movie">
-      <header class="movie-banner" :style="{ backgroundImage: bannerImage }">
+      <header class="movie-banner" >
         <div class="banner-overlay">
           <div class="container">
             <div class="row align-items-center">

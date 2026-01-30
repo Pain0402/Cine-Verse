@@ -43,6 +43,9 @@ const mapApiData = (movie) => ({
   title: movie.title,
   posterUrl: movie.poster_url,
   averageRating: movie.average_rating,
+  year: movie.release_year,
+  genres: movie.genres || [],
+  duration: movie.runtime_minutes // Add duration if available
 });
 
 // --- Lấy dữ liệu phim bằng TanStack Vue Query ---
