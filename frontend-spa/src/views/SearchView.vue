@@ -211,7 +211,7 @@ watch(
 <style scoped>
 .search-view-container {
   padding-top: 100px;
-  background-color: var(--deep-space-black);
+  /* background-color: var(--deep-space-black); REMOVED for global galaxy effect */
   min-height: 100vh;
   color: var(--nebula-white);
 }

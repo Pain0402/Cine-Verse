@@ -182,8 +182,8 @@ const formattedJoinDate = computed(() => {
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 
 .profile-page {
-  background-color: var(--deep-space-black);
-  background-image: linear-gradient(175deg, rgba(46, 115, 232, 0.1) -10%, rgba(90, 66, 212, 0.15) 40%, var(--deep-space-black) 80%);
+  /* background-color: var(--deep-space-black); REMOVED */
+  /* background-image: linear-gradient... REMOVED */
   color: var(--nebula-white);
   padding: 4rem 0;
   min-height: 100vh;

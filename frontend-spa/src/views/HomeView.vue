@@ -1,5 +1,5 @@
 <template>
-  <div class="home-main" :style="{ backgroundImage: bannerImage }">
+  <div class="home-main">
     <div class="cineverse-theme">
       <HeroSlider />
       <!-- Bảng Xếp Hạng Top 10 (Mới) -->
@@ -35,14 +35,7 @@ import HeroSlider from '@/components/HeroSlider.vue';
 import TopRanking from '@/components/TopRanking.vue';
 import SkeletonMovieList from '@/components/SkeletonMovieList.vue';
 
-// --- Banner nền ngẫu nhiên ---
-const imageUrls = [
-  'https://wallpapers.com/images/high/earth-in-the-universe-a879b6hwwtbywot0.webp',
-  'https://wallpapers.com/images/hd/tree-and-vast-universe-hk1a2py5d3x1tpgf.webp',
-  'https://cdn.pixabay.com/photo/2018/08/15/13/10/new-year-background-3608029_1280.jpg'
-];
-const randomIndex = Math.floor(Math.random() * imageUrls.length);
-const bannerImage = `url(${imageUrls[randomIndex]})`;
+// --- Banner nền ngẫu nhiên - Đã loại bỏ để dùng CSS Galaxy Effect ---
 
 // --- Hàm tiện ích để ánh xạ dữ liệu  ---
 const mapApiData = (movie) => ({
@@ -103,11 +96,7 @@ const error = computed(() => trendingError.value || topRatedError.value || anime
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-color: inherit;
+  background-color: transparent;
   padding: 0;
   margin: 0;
 }

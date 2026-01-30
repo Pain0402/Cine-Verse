@@ -201,8 +201,8 @@ const loading = computed(() => isProfileLoading.value || isWatchlistLoading.valu
 <style scoped>
 /* File CSS cho trang quản lý watchlist */
 .watchlists-view-container {
-  background-color: var(--deep-space-black);
-  background-image: url(https://wallpapers.com/images/high/void-5sm9tokk2youui90.webp);
+  /* background-color: var(--deep-space-black); REMOVED */
+  /* background-image: url(https://wallpapers.com/images/high/void-5sm9tokk2youui90.webp); REMOVED */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

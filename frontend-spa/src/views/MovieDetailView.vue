@@ -412,7 +412,7 @@ const handleImageError = (event) => {
 
 <style scoped>
 .cineverse-theme {
-  background-color: var(--deep-space-black);
+  /* background-color: var(--deep-space-black); REMOVED */
   color: var(--nebula-white);
   font-family: 'Be Vietnam Pro', sans-serif;
   min-height: 100vh;

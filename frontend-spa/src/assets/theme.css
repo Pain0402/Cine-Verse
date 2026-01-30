@@ -16,7 +16,15 @@
 
 body {
   background-color: transparent;
-  /* Allow StarfieldBackground to show */
+  /* Galaxy Background Effect - Global */
+  background:
+    radial-gradient(circle at 20% 30%, rgba(76, 29, 149, 0.4) 0%, transparent 50%),
+    /* Deep Purple Nebula */
+    radial-gradient(circle at 80% 70%, rgba(13, 148, 136, 0.2) 0%, transparent 50%),
+    /* Teal Nebula */
+    radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.8) 100%);
+  /* Vignette */
+  background-attachment: fixed;
   color: var(--nebula-white);
 }
 
