@@ -1,8 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav">
     <div class="container">
-      <router-link class="navbar-brand fw-bold" :to="{ name: 'home' }">
-        <img class="navbar-brand-logo rotate-in-center" src="@/assets/imgs/universe.png" alt="CineVerse Logo">CineVerse
+      <router-link class="navbar-brand fw-bold d-flex align-items-center gap-2" :to="{ name: 'home' }">
+        <img class="navbar-brand-logo rotate-in-center" src="@/assets/imgs/universe.png" alt="CineVerse Logo">
+        <span class="brand-text">CineVerse</span>
       </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -215,7 +216,18 @@ const goToSuggestion = (item) => {
 }
 
 .navbar-brand:hover {
-  color: var(--starlight-yellow);
+  opacity: 0.9;
+}
+
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #FFFFFF 0%, var(--starlight-yellow) 30%, var(--cosmic-blue) 70%, var(--galaxy-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px rgba(46, 115, 232, 0.5); /* Cosmic glow */
+  letter-spacing: 1px;
 }
 
 .rotate-in-center:hover {

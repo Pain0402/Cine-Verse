@@ -135,3 +135,55 @@ body {
   border-color: transparent !important;
   color: white !important;
 }
+
+/* ========================================= */
+/* BRAND / LOGO ANIMATIONS                   */
+/* ========================================= */
+
+.navbar-brand-logo,
+.footer-logo {
+  animation: lively-mascot 6s infinite ease-in-out;
+  transform-origin: center bottom;
+  /* Anchor at bottom for tilting/squashing */
+  display: inline-block;
+  will-change: transform;
+}
+
+@keyframes lively-mascot {
+
+  0%,
+  40% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  /* Look Around (Nghiêng đầu ngó nghiêng) */
+  45% {
+    transform: rotate(-15deg) scale(1.1);
+  }
+
+  50% {
+    transform: rotate(15deg) scale(1.1);
+  }
+
+  55% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  /* Idle */
+  90% {
+    transform: scale(1);
+  }
+
+  /* Blink (Chớp mắt - nén dọc) */
+  96% {
+    transform: scaleY(0.5) scaleX(1.1);
+  }
+
+  98% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

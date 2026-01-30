@@ -8,7 +8,7 @@
         <div class="col-lg-4 col-md-6">
           <div class="d-flex align-items-center mb-3">
             <img src="@/assets/imgs/universe.png" alt="Logo CineVerse" class="footer-logo me-2">
-            <h4 class="footer-title mb-0">CineVerse</h4>
+            <h4 class="footer-title mb-0"><span class="brand-text">CineVerse</span></h4>
           </div>
           <p class="small">
             Cánh cổng đưa bạn đến với vũ trụ điện ảnh bất tận. Khám phá, theo dõi và thảo luận về những bộ phim yêu
@@ -64,6 +64,17 @@
 </template>
 
 <style scoped>
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #FFFFFF 0%, var(--starlight-yellow) 30%, var(--cosmic-blue) 70%, var(--galaxy-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px rgba(46, 115, 232, 0.5);
+  letter-spacing: 1px;
+}
+
 .footer-container {
   position: relative;
   background: rgba(13, 12, 29, 0.4); /* More transparent to show stars */
@@ -109,7 +120,7 @@
 .footer-title {
   font-weight: 700;
   color: #fff;
-  text-shadow: 0 0 10px rgba(90, 66, 212, 0.5); /* Glow text */
+  /* Glow text managed by brand-text now */
 }
 
 .footer-heading {
