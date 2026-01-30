@@ -2,8 +2,11 @@
   <div class="home-main" :style="{ backgroundImage: bannerImage }">
     <div class="cineverse-theme">
       <HeroSlider />
+      <!-- Bảng Xếp Hạng Top 10 (Mới) -->
+      <TopRanking />
+      
       <main id="content" class="py-5">
-        <div class="container">
+        <div class="container container-custom">
           <div v-if="isLoading">
             <SkeletonMovieList />
             <SkeletonMovieList />
@@ -29,6 +32,7 @@ import { useQuery } from '@tanstack/vue-query';
 import cineverseService from '@/services/cineverse.service';
 import MovieList from '@/components/MovieList.vue';
 import HeroSlider from '@/components/HeroSlider.vue';
+import TopRanking from '@/components/TopRanking.vue';
 import SkeletonMovieList from '@/components/SkeletonMovieList.vue';
 
 // --- Banner nền ngẫu nhiên ---

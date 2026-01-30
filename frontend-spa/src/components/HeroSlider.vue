@@ -1,53 +1,51 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-
-// Sử dụng ảnh từ Unsplash để đảm bảo load được (Reliable Source)
-const slides = ref([
-  {
-    title: 'Avengers: Endgame',
-    subtitle: 'Sau sự kiện tàn khốc của Infinity War, vũ trụ đang dần tàn lụi. Với sự giúp đỡ của các đồng minh còn lại, Avengers tập hợp một lần nữa để đảo ngược hành động của Thanos.',
-    year: '2019',
-    rating: '8.4',
-    quality: '4K',
-    genre: 'Viễn Tưởng • Hành Động',
-    buttonText: 'Xem Trailer',
-    // Ảnh Avenger concept art (hoặc tương tự)
-    backgroundUrl: 'https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop' 
-  },
-  {
-    title: 'Interstellar',
-    subtitle: 'Một nhóm nhà thám hiểm thực hiện chuyến du hành vượt không gian qua một lỗ sâu mới được khám phá để tìm kiếm vùng đất mới cho nhân loại.',
-    year: '2014',
-    rating: '8.7',
-    quality: 'HD',
-    genre: 'Khoa Học • Phiêu Lưu',
-    buttonText: 'Xem Ngay',
-    // Ảnh vũ trụ/lỗ đen
-    backgroundUrl: 'https://images.unsplash.com/photo-1462332420958-a05d1e002413?q=80&w=2007&auto=format&fit=crop'
-  },
-  {
-    title: 'Dune: Part Two',
-    subtitle: 'Paul Atreides hợp nhất với Chani và người Fremen trên con đường trả thù những kẻ đã hủy hoại gia đình anh.',
-    year: '2024',
-    rating: '9.0',
-    quality: 'IMAX',
-    genre: 'Sử Thi • Hành Động',
-    buttonText: 'Đặt Vé Ngay',
-    // Ảnh sa mạc/Dune vibe
-    backgroundUrl: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=1976&auto=format&fit=crop'
-  }
-]);
+import { useQuery } from '@tanstack/vue-query';
+import cineverseService from '@/services/cineverse.service';
 
 // State quản lý slide hiện tại và tự động chạy
 const currentSlide = ref(0);
 let autoplayInterval = null;
 
+// Danh sách ảnh nền vũ trụ (tương tự HomeView cũ)
+const universeWallpapers = [
+  'https://wallpapers.com/images/high/earth-in-the-universe-a879b6hwwtbywot0.webp',
+  'https://wallpapers.com/images/hd/tree-and-vast-universe-hk1a2py5d3x1tpgf.webp',
+  'https://cdn.pixabay.com/photo/2018/08/15/13/10/new-year-background-3608029_1280.jpg',
+  'https://images.unsplash.com/photo-1462332420958-a05d1e002413?q=80&w=2007&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'
+];
+
+// Fetch Data từ API cho Slider
+const { data: slides = [] } = useQuery({
+  queryKey: ['movies', 'heroSlider'],
+  queryFn: () => cineverseService.getMovies({ page: 1, limit: 5, sortBy: 'rating_count' }), // Lấy 5 phim hot nhất
+  select: (data) => {
+    if (!Array.isArray(data)) return [];
+    return data.map((movie, index) => ({
+      id: movie.movie_id,
+      title: movie.title,
+      // Dùng description nếu có, không thì text mặc định
+      subtitle: movie.description || 'Một siêu phẩm điện ảnh không thể bỏ lỡ trong năm nay. Khám phá ngay tại CineVerse.',
+      year: movie.release_year || '2024',
+      rating: movie.average_rating || '8.5',
+      quality: 'HD',
+      genre: Array.isArray(movie.genres) ? movie.genres.join(' • ') : 'Phim Hot',
+      buttonText: 'Xem Ngay',
+      // Dùng ảnh nền vũ trụ theo thứ tự
+      backgroundUrl: universeWallpapers[index % universeWallpapers.length]
+    }));
+  }
+});
+
 // --- Functions ---
 const nextSlide = () => {
+  if (slides.value.length === 0) return;
   currentSlide.value = (currentSlide.value + 1) % slides.value.length;
 };
 
 const prevSlide = () => {
+  if (slides.value.length === 0) return;
   currentSlide.value = (currentSlide.value - 1 + slides.value.length) % slides.value.length;
 };
 
@@ -77,7 +75,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="hero-slider-container" @mouseenter="stopAutoplay" @mouseleave="startAutoplay">
+  <header class="hero-slider-container container" @mouseenter="stopAutoplay" @mouseleave="startAutoplay">
     <div class="slider-wrapper">
       <div v-for="(slide, index) in slides" :key="index" class="slide-item" 
            :class="{ active: index === currentSlide }"
@@ -140,16 +138,17 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* Container chính */
+/* Container chính - Boxed Style */
 .hero-slider-container {
   position: relative;
-  width: 100vw; /* Full width viewport */
-  height: 85vh; /* Cinematic height */
+  width: 100%;
+  height: 60vh; /* Thu nhỏ chiều cao */
   overflow: hidden;
-  background-color: transparent; /* Fix: Remove solid black background */
-  margin-top: -70px; /* Under navbar */
-  margin-left: calc(-50vw + 50%); /* Hack to break out of container if parent constrains */
-  left: 0;
+  background-color: var(--surface-glass);
+  margin-top: 30px; /* Cách navbar một đoạn */
+  border-radius: 15px; /* Bo góc */
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 .slider-wrapper {
@@ -165,7 +164,7 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.8s ease-in-out, visibility 0.8s, transform 8s linear;
@@ -176,17 +175,22 @@ onUnmounted(() => {
   opacity: 1;
   visibility: visible;
   z-index: 1;
-  transform: scale(1.05); /* Zoom effect */
+  transform: scale(1.05); /* Hiệu ứng Ken Burns nhẹ */
 }
 
-/* Gradient Overlay tối ưu hóa cho text trắng */
+/* Gradient Overlay */
 .gradient-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 30% 50%, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+  background: linear-gradient(
+    to right, 
+    rgba(0, 0, 0, 0.8) 0%, 
+    rgba(0, 0, 0, 0.4) 50%, 
+    transparent 100%
+  );
   z-index: 1;
 }
 
@@ -346,7 +350,7 @@ onUnmounted(() => {
 
 /* Responsive adjustment */
 @media (max-width: 768px) {
-  .hero-slider-container { height: 70vh; }
+  .hero-slider-container { height: 70vh; margin-top: 80px; }
   .gradient-overlay {
     background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
   }
